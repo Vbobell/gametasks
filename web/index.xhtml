@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Usuario: " for="nomeUsuario"/>
+                <h:inputText value="#{usuarioMb.usuario.nome}" id="nomeUsuario"/>
+                
+                <h:outputLabel value="Senha: " for="senhaUsuario"/>
+                <h:inputSecret value="#{usuarioMb.usuario.senha}" id="senhaUsuario"/>
+                <h:commandButton value="Login" action="#{usuarioMb.verificaLogin()}" />
+            </h:panelGrid>
+            <h:messages id="idMensagem" showDetail="false" errorStyle="color:red"/>
+        </h:form>
+    </h:body>
+</html>
+
