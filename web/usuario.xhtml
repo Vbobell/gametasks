@@ -8,8 +8,9 @@
     <h:body>
         <h:outputText value="Seja bem vindo, #{usuarioMb.usuario.nome}" />
         
-        <p>Cadastrar Usuário:</p>
+        <p>Menu usuário:</p>
         <h:button value="cadastrar" outcome="cadastro" class="button"/>
+        <h:button value="visualizar" outcome="lista" class="button"/>
         <h:form>
             <h:commandLink value="Logout" action="#{usuarioMb.realizaLogout()}"/>
         </h:form>

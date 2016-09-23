@@ -9,16 +9,16 @@
         <h:form>
             <h:panelGrid columns="2" >
                 <h:outputLabel value="Nome:" for="nomeUsuario"/>
-                <h:inputText value="#{registroUsuario.usuario.nome}" id="nomeUsuario"/>
+                <h:inputText value="#{registroUsuario.usuarioAdd.nome}" id="nomeUsuario"/>
 
                 <h:outputLabel value="Senha:" for="senhaUsuario"/>
-                <h:inputText  value="#{registroUsuario.usuario.senha}" id="senhaUsuario"/>
+                <h:inputText  value="#{registroUsuario.usuarioAdd.senha}" id="senhaUsuario"/>
                 
                 <h:outputLabel value="Cpf:" for="cpfUsuario"/>
-                <h:inputText  value="#{registroUsuario.usuario.cpf}"  id="cpfUsuario"/>
+                <h:inputText  value="#{registroUsuario.usuarioAdd.cpf}"  id="cpfUsuario"/>
                 
                 <h:outputLabel value="Função:" for="funcaoUsuario"/>
-                <h:inputText value="#{registroUsuario.usuario.funcao}" id="funcaoUsuario"/>
+                <h:inputText value="#{registroUsuario.usuarioAdd.funcao}" id="funcaoUsuario"/>
                 
                 <h:commandButton value="Cadastrar" action="#{registroUsuario.adicionar()}"/>
                 
