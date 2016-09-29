@@ -2,28 +2,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:head>
         <title>Login</title>
     </h:head>
-    <h:body>
-        <ui:composition template="./modelo.xhtml">
-            <ui:define name="body"> 
-        <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Usuario: " for="nomeUsuario"/>
-                <h:inputText value="#{usuarioMb.usuario.nome}" id="nomeUsuario"/>
-                
-                <h:outputLabel value="Senha: " for="senhaUsuario"/>
-                <h:inputSecret value="#{usuarioMb.usuario.senha}" id="senhaUsuario"/>
-                <h:commandButton value="Login" action="#{usuarioMb.verificaLogin()}" />
-            </h:panelGrid>
-            <h:messages id="idMensagem" showDetail="false" errorStyle="color:red"/>
-        </h:form>
-            </ui:define>
-        </ui:composition>
+    <ui:composition template="./modelo.xhtml">
+    <ui:define name="body">
+        <h:body class="corpoPaginaInicial">
+            <header class="ui grid" style="margin:0;">
+            
+            <h:form class="col-xs-12 col-md-12 col-lg-4 ui large label violet form loginInicial">
+                <h:outputLabel class="ui pointing below label row" value="Login" for="nomeUsuario"/>
+                <div class="col-xs-12 col-md-12 fields centered row">
+                <div class="col-xs-12 col-md-12 field">
+                <h:inputText class="col-xs-12 col-md-12"  p:placeholder="Usuario" value="#{usuarioMb.usuario.nome}" id="nomeUsuario"/>
+                <h:inputSecret class="col-xs-12 col-md-12" p:placeholder="Senha" value="#{usuarioMb.usuario.senha}" id="senhaUsuario"/>    
+                <h:commandButton class="col-xs-12 col-md-12 ui positive button" value="Começar o jogo" action="#{usuarioMb.verificaLogin()}" />
+                </div>
+                </div>
+                <h:messages id="mensagem" class="ui pointing below red basic label" tooltip="true" showSummary="true"/>
+            </h:form>
+            <div class="col-xs-12 col-md-12 col-lg-8 ui massive label black">
+                <h1>Game Tasks</h1>
+                <p>Divirta-se no trabalha</p>
+             </div>
+            </header>
+            
+        
     </h:body>
-    
+    </ui:define>
+    </ui:composition>
 </html>
 

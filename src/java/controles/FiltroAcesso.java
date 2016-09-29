@@ -6,6 +6,8 @@
 package controles;
 
 import java.io.IOException;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -17,10 +19,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author lhries
- */
 @WebFilter(filterName = "FiltroAcesso", urlPatterns = {"/faces/usuario.xhtml"})
 public class FiltroAcesso implements Filter {
 
@@ -42,6 +40,9 @@ public class FiltroAcesso implements Filter {
         } else {
             //redireciona para a p�gina de login
             //getContextPath -> Caminho da aplica��o
+            FacesContext contexto = FacesContext.getCurrentInstance();
+            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Login inválido"," Usuário ou senha está errado!");
+            contexto.addMessage(null, mensagem);
             resp.sendRedirect(req.getContextPath() + "/faces/index.xhtml");
         }
     }

@@ -9,8 +9,10 @@ import estruturas.RegistroUsuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import modelos.Usuario;
 
 /**
@@ -19,15 +21,17 @@ import modelos.Usuario;
  */
 @Named(value = "usuarioMb")
 @SessionScoped
+
 public class UsuarioMb implements Serializable {
 
     private boolean logado;
     private Usuario usuario;
-    private RegistroUsuario registros;
+    
+    @Inject
+    RegistroUsuario registroUsuario;
     //private UsuarioDao registro;
 
     public UsuarioMb() { 
-        registros = new RegistroUsuario();
         usuario = new Usuario();
         logado = false;
     }
@@ -45,11 +49,11 @@ public class UsuarioMb implements Serializable {
     }
 
     public String verificaLogin() {
-        if (registros.buscarUsuario(usuario) == null) {
+        if (registroUsuario.buscarUsuarioLogin(usuario) == false) {
             FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Login inv�lido!", "Usu�rio ou senha est�o errados!");
-            contexto.addMessage("idMensagem", mensagem);
-            return ("index?faces-redirect=true");
+            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Login inválido"," Usuário ou senha está errado!");
+            contexto.addMessage(null, mensagem);
+            return ("index");
         } else {
             logado = true;
             return ("usuario?faces-redirect=true");
@@ -59,6 +63,7 @@ public class UsuarioMb implements Serializable {
     public String realizaLogout() {
         FacesContext contexto = FacesContext.getCurrentInstance();
         contexto.getExternalContext().invalidateSession();
+        logado = false;
         return ("index?faces-redirect=true");
     }
 

@@ -1,0 +1,37 @@
+
+input[type="text"],input[type="password"]{
+    margin:0 0 10px 0 !important;
+    color:#000;
+}
+.ui.large.form{
+    z-index: 2;
+}
+.ui.massive.label{
+    padding-top: 50px;
+    text-align: center;
+    margin-left: -3px;
+}
+ui.massive.label.black,.loginInicial, .ui.massive.label{
+    opacity: 0.7;
+    border-radius:0;
+}
+.fundo{
+    height:100%;
+}
+.cadastro{
+    display:none;
+    padding:10px;
+    position: fixed;
+    left: 33%;
+    transition: 1s ease;
+    border-radius:0;
+}
+
+.cadastro label.col-lg-12 {
+    padding: 4px !important;
+}
+
+.displayBlock{
+    display: block;
+    transition: 1s ease;
+}
