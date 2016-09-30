@@ -1,3 +1,9 @@
 .corpoPaginaInicial{
     background: url('../imagens/fundo.jpg') no-repeat;
 }
+header.col-xs-12.col-md-12.col-lg-3.ui.massive.label.black.menuLateral {
+    padding: 20px 0 0 0;
+}
+.opcaoMenu{
+    width:100%;
+}
