@@ -9,13 +9,16 @@ $(document).ready(function(){
     $('.botaoMenu').click(function(){
         var selecionado = $(this).attr('id');
             switch(selecionado){
-            case 'adicionar':
-                $('.cadastro').addClass('displayBlock');
+            case 'adicionarUsuario':
+                $('.cadastro:nth(0)').addClass('displayBlock');
+            break;
+            case 'adicionarTarefa':
+                $('.cadastro:nth(1)').addClass('displayBlock');
             break;
         }      
     });
     $('.fundo').click(function(){
-         $('.cadastro').removeClass('displayBlock');
+         //$('.cadastro').removeClass('displayBlock');
     });
  });
 

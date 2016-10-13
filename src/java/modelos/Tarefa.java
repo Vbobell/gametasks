@@ -14,18 +14,18 @@ import java.time.LocalDate;
 public class Tarefa {
 
     private int idTarefa;
-    private String titulo, descricao, status;
+    private String titulo, descricao, status,cpf;
     private int valor;
     private LocalDate dataInicio, dataLimite;
-
+    
     public Tarefa() {
 
     }
 
-    public Tarefa(int idTarefa, String titulo, String descricao,LocalDate dataInicio, LocalDate dataLimite) {
-        this.idTarefa = idTarefa;
+    public Tarefa(String titulo, String descricao,String cpf, LocalDate dataInicio, LocalDate dataLimite) {
         this.titulo = titulo;
         this.descricao = descricao;
+        this.cpf = cpf;
         this.dataInicio = dataInicio;
         this.dataLimite = dataLimite;
     }
