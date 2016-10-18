@@ -86,4 +86,9 @@ public class Tarefa {
         return dataLimite;
     }
 
+    @Override
+    public String toString() {
+        return "Tarefa{" + "idTarefa=" + idTarefa + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status + ", cpf=" + cpf + ", valor=" + valor + ", dataInicio=" + dataInicio + ", dataLimite=" + dataLimite + '}';
+    }
+
 }

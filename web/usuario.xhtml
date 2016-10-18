@@ -23,22 +23,38 @@
                     <section class="ui vertical massive menu">
                         <div class="ui header opcaoMenu">Menu usuário
                             <div class="ui borderless item button botaoMenu" id="adicionarUsuario">Adicionar usuário</div>
+                            <div class="ui borderless item button botaoMenu" id="mostraUsuario">Mostrar usuário</div>
                         </div>
                         <div class="ui header opcaoMenu">Menu tarefa
                             <div class="ui borderless item button botaoMenu" id="adicionarTarefa">Adicionar tarefa</div>
+                            <div class="ui borderless item button botaoMenu" id="mostraTarefa">Mostrar tarefa</div>
                         </div>
                     </section>
                 </header>
 
-                <section>
+                <section class="conteudo">
                     <ui:repeat var="usuario" value="#{registroUsuario.lista}">
                         <div class="usuario">
-                            <h:outputLabel for="idNome" value="Nome:"/>
-                            <h:outputText id="idNome" value="#{usuario.nome}"/>
-                            <h:outputLabel for="idFuncao" value="Função:"/>
-                            <h:outputText id="idFuncao" value="#{usuario.funcao}"/>
+                            <h:outputLabel for="nome" value="Nome:"/>
+                            <h:outputText id="nome" value="#{usuario.nome}"/>
+                            <h:outputLabel for="funcao" value="Função:"/>
+                            <h:outputText id="funcao" value="#{usuario.funcao}"/>
                             <h:form>
                                 <h:commandButton value="Excluir" action="#{registroUsuario.excluir(usuario)}"/>
+                            </h:form>
+                        </div>
+                    </ui:repeat>
+                </section>
+                
+                <section class="conteudo">
+                    <ui:repeat var="tarefa" value="#{registroTarefa.lista}">
+                        <div class="tarefa">
+                            <h:outputLabel for="idDescricao" value="Descrição:"/>
+                            <h:outputText id="descricao" value="#{tarefa.descricao}"/>
+                            <h:outputLabel for="status" value="Status:"/>
+                            <h:outputText id="status" value="#{tarefa.status}"/>
+                            <h:form>
+                                <h:commandButton value="Excluir" action="#{registroTarefa.excluir(tarefa)}"/>
                             </h:form>
                         </div>
                     </ui:repeat>
@@ -66,8 +82,12 @@
                                 <h:selectOneMenu>
                                     <f:selectItems var="usuario" value="#{registroUsuario.lista}" itemValue="#{usuario.cpf}" itemLabel="#{usuario.nome}" />
                                 </h:selectOneMenu>
-                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataInicio}"  p:placeholder="data inicio"/>
-                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataLimite}" p:placeholder="data limite"/>
+                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataInicio}"  p:placeholder="data inicio" id="dataInicio">
+                                <f:converter converterId="localDateConverter" for="dataInicio"/>
+                                </h:inputText>
+                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataLimite}" p:placeholder="data limite" id="dataLimite">
+                                <f:converter converterId="localDateConverter" for="dataLimite"/>
+                                </h:inputText>
                             </div>
                             <div class="col-lg-12">
                                 <h:commandButton class="ui positive button" value="Cadastrar" action="#{registroTarefa.adicionar()}"/>

@@ -27,6 +27,7 @@ public class RegistroTarefa {
      * Creates a new instance of RegistroTarefa
      */
     public RegistroTarefa() {
+        this.tarefaAdd = new Tarefa();
     }
 
     public Tarefa getTarefaAdd() {
@@ -50,6 +51,7 @@ public class RegistroTarefa {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Tarefa já cadastrada.");
             contexto.addMessage("idMensagem", mensagem);
+            System.out.println(tarefaAdd.toString());
             return ("usuario");    
         } else{
             lista.add(tarefaAdd);

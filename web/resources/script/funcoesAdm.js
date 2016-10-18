@@ -3,22 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$(document).ready(function(){
-    $('.cadastro').removeClass('displayBlock');
     
-    $('.botaoMenu').click(function(){
+    $('.opcaoMenu .botaoMenu').click(function(){
         var selecionado = $(this).attr('id');
             switch(selecionado){
             case 'adicionarUsuario':
-                $('.cadastro:nth(0)').addClass('displayBlock');
+                $('.cadastro:nth(0),.fundo').toggleClass('displayBlock');
+            break;
+            case 'mostraUsuario':
+                $('.conteudo:nth(0)').toggleClass('displayBlock');
             break;
             case 'adicionarTarefa':
-                $('.cadastro:nth(1)').addClass('displayBlock');
+                $('.cadastro:nth(1),.fundo').toggleClass('displayBlock');
+            break;
+            case 'mostraTarefa':
+                $('.conteudo:nth(1)').toggleClass('displayBlock');
             break;
         }      
     });
-    $('.fundo').click(function(){
-         //$('.cadastro').removeClass('displayBlock');
+    $('.cadastro').click(function(event){
+        event.preventDefault();
     });
- });
+
+    
+    
+
 
