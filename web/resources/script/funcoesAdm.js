@@ -6,23 +6,33 @@
     
     $('.opcaoMenu .botaoMenu').click(function(){
         var selecionado = $(this).attr('id');
+        
+        $('.cadastro,.fundo,.conteudo').slideUp();
+        
             switch(selecionado){
             case 'adicionarUsuario':
-                $('.cadastro:nth(0),.fundo').toggleClass('displayBlock');
+                $('.fundo').slideDown();
+                $('.cadastro:nth(0)').slideDown();
             break;
             case 'mostraUsuario':
-                $('.conteudo:nth(0)').toggleClass('displayBlock');
+                $('.conteudo:nth(0)').slideDown();
             break;
             case 'adicionarTarefa':
-                $('.cadastro:nth(1),.fundo').toggleClass('displayBlock');
+                $('.fundo').slideDown();
+                $('.cadastro:nth(1)').slideDown();
             break;
             case 'mostraTarefa':
-                $('.conteudo:nth(1)').toggleClass('displayBlock');
+                $('.conteudo:nth(1)').slideDown();
             break;
         }      
     });
     $('.cadastro').click(function(event){
         event.preventDefault();
+    });
+    
+    $('.fundo').click(function(){
+        $(this).slideUp();
+        $('.cadastro').slideUp();
     });
 
     

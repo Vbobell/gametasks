@@ -14,15 +14,20 @@ import java.time.LocalDate;
 public class Tarefa {
 
     private int idTarefa;
-    private String titulo, descricao, status,cpf;
+    private String titulo, descricao, status, cpf, dataInicioString, dataFimString;
     private int valor;
     private LocalDate dataInicio, dataLimite;
+    private Usuario usuario;
     
     public Tarefa() {
 
     }
-
-    public Tarefa(String titulo, String descricao,String cpf, LocalDate dataInicio, LocalDate dataLimite) {
+    public Tarefa(String titulo, String descricao) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }
+    
+    public Tarefa(String titulo, String descricao, String cpf, LocalDate dataInicio, LocalDate dataLimite) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.cpf = cpf;
@@ -58,6 +63,14 @@ public class Tarefa {
         this.dataLimite = dataLimite;
     }
 
+    public void setDataInicioString(String dataInicioString) {
+        this.dataInicioString = dataInicioString;
+    }
+
+    public void setDataFimString(String dataFimString) {
+        this.dataFimString = dataFimString;
+    }
+
     public int getIdTarefa() {
         return idTarefa;
     }
@@ -86,9 +99,35 @@ public class Tarefa {
         return dataLimite;
     }
 
+    public String getDataInicioString() {
+        return dataInicioString;
+    }
+
+    public String getDataFimString() {
+        return dataFimString;
+    }
+
     @Override
     public String toString() {
         return "Tarefa{" + "idTarefa=" + idTarefa + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status + ", cpf=" + cpf + ", valor=" + valor + ", dataInicio=" + dataInicio + ", dataLimite=" + dataLimite + '}';
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
 }

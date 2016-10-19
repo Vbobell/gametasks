@@ -11,8 +11,8 @@ input[type="text"],input[type="password"]{
     text-align: center;
     margin-left: -3px;
 }
-ui.massive.label.black,.loginInicial, .ui.massive.label{
-    opacity: 0.7;
+ui.massive.label.black.rgba, .ui.massive.label{
+    background-color: rgba(000,000,000,0.7) !important;
     border-radius:0;
 }
 .conteudo, .cadastro{
@@ -21,7 +21,8 @@ ui.massive.label.black,.loginInicial, .ui.massive.label{
 .cadastro{
     padding:10px;
     position: fixed;
-    left: 33%;
+    left: 35%;
+    top: 30%;
     transition: 1s ease;
     border-radius:0;
 }

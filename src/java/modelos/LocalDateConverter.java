@@ -30,7 +30,7 @@ return null;
 LocalDate localDate;
 
 try {
-localDate = LocalDate.parse(stringValue, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+localDate = LocalDate.parse(stringValue, DateTimeFormatter.ofPattern("dd/mm/yyyy"));
 
 } catch (DateTimeParseException e) {
 
@@ -44,11 +44,10 @@ return localDate;
 public String getAsString(FacesContext context, UIComponent component, Object localDateValue) {
 
 if (null == localDateValue) {
-
 return "";
 }
 
-return ((LocalDate) localDateValue).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+return ((LocalDate) localDateValue).format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
 }
 }
 

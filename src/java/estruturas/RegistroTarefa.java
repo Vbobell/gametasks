@@ -28,6 +28,7 @@ public class RegistroTarefa {
      */
     public RegistroTarefa() {
         this.tarefaAdd = new Tarefa();
+        lista.add(new Tarefa("teste","teste"));
     }
 
     public Tarefa getTarefaAdd() {
@@ -46,7 +47,7 @@ public class RegistroTarefa {
         this.lista = lista;
     }
     
-       public String adicionar() {
+       public String adicionarTarefa() {
         if (buscarTarefa(tarefaAdd) != null) {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Tarefa já cadastrada.");
@@ -55,6 +56,7 @@ public class RegistroTarefa {
             return ("usuario");    
         } else{
             lista.add(tarefaAdd);
+            System.out.println(tarefaAdd.toString());
             this.tarefaAdd = new Tarefa();
             return("usuario");
         }
@@ -69,7 +71,7 @@ public class RegistroTarefa {
         return null;
     }
 
-    public String excluir(Tarefa t) {
+    public String excluirTarefa(Tarefa t) {
             lista.remove(t);
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Tarefa removido");
