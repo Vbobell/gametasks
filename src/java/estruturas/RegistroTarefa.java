@@ -21,47 +21,27 @@ import modelos.Tarefa;
 @ApplicationScoped
 public class RegistroTarefa {
 
-    private Tarefa tarefaAdd;
+   private Tarefa tarefaAdd;
     private List<Tarefa> lista = new ArrayList();
-    /**
-     * Creates a new instance of RegistroTarefa
-     */
-    public RegistroTarefa() {
-        this.tarefaAdd = new Tarefa();
-        lista.add(new Tarefa("teste","teste"));
-    }
-
-    public Tarefa getTarefaAdd() {
-        return tarefaAdd;
-    }
-
-    public void setTarefaAdd(Tarefa tarefaAdd) {
-        this.tarefaAdd = tarefaAdd;
-    }
-
-    public List<Tarefa> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Tarefa> lista) {
-        this.lista = lista;
-    }
     
-       public String adicionarTarefa() {
+    public RegistroTarefa() {
+       tarefaAdd = new Tarefa();
+       lista.add(new Tarefa("teste","teste"));
+    }
+
+    public String adicionarTarefa() {
         if (buscarTarefa(tarefaAdd) != null) {
             FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Tarefa já cadastrada.");
+            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Tarefa já cadastrado.");
             contexto.addMessage("idMensagem", mensagem);
-            System.out.println(tarefaAdd.toString());
             return ("usuario");    
         } else{
             lista.add(tarefaAdd);
-            System.out.println(tarefaAdd.toString());
             this.tarefaAdd = new Tarefa();
             return("usuario");
         }
     }
-       
+
     public Tarefa buscarTarefa(Tarefa t) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getTitulo().equalsIgnoreCase(t.getTitulo())) {
@@ -71,13 +51,31 @@ public class RegistroTarefa {
         return null;
     }
 
-    public String excluirTarefa(Tarefa t) {
-            lista.remove(t);
+    public String excluirTarefa(Tarefa u) {
+            lista.remove(u);
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Tarefa removido");
             contexto.addMessage("idMensagem", mensagem);
-            return ("tarefa?faces-redirect=true");
+            return ("usuario?faces-redirect=true");
         } 
+
+    public void setList(List<Tarefa> lista){
+        this.lista = lista;
+    }
+    public List<Tarefa> getLista() {
+        return lista;
+    }
+    @Override
+    public String toString() {
+        return "Tarefas: \n" + lista;
+    }
     
+    public void setTarefa(Tarefa tarefa) {
+        this.tarefaAdd = tarefa;
+    }
+    
+    public Tarefa getTarefaAdd() {
+        return tarefaAdd;
+    }
     
 }

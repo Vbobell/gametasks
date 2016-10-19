@@ -27,7 +27,7 @@
         }      
     });
     $('.cadastro').click(function(event){
-        event.preventDefault();
+        //event.preventDefault();
     });
     
     $('.fundo').click(function(){

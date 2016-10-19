@@ -29,7 +29,7 @@ public class RegistroUsuario {
        lista.add(new Usuario("admin","12345"));
     }
 
-    public String adicionar() {
+    public String adicionarUsuario() {
         if (buscarUsuario(usuarioAdd) != null) {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Usuario já cadastrado.");

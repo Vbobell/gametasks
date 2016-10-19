@@ -6,6 +6,9 @@ input[type="text"],input[type="password"]{
 .ui.large.form{
     z-index: 2;
 }
+.ui.massive.vertical.menu {
+    width: 100%;
+}
 .ui.massive.label{
     padding-top: 50px;
     text-align: center;

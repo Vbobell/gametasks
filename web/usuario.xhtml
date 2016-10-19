@@ -32,39 +32,77 @@
                     </section>
                 </header>
 
-                <section class="conteudo">
-                    <ui:repeat var="usuario" value="#{registroUsuario.lista}">
-                        <div class="usuario">
-                            <h:outputLabel for="nome" value="Nome:"/>
-                            <h:outputText id="nome" value="#{usuario.nome}"/>
-                            <h:outputLabel for="funcao" value="Função:"/>
-                            <h:outputText id="funcao" value="#{usuario.funcao}"/>
-                            <h:form>
-                                <h:commandButton value="Excluir" action="#{registroUsuario.excluir(usuario)}"/>
-                            </h:form>
-                        </div>
-                    </ui:repeat>
+                <section class="col-lg-8 conteudo">
+
+                    <div class="usuario">
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th><h:outputLabel value="Nome:"/></th>
+                                    <th><h:outputLabel value="Função:"/></th>
+                                    <th><h:outputText value="Opções"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="usuario" value="#{registroUsuario.lista}">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{usuario.nome}"/>
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{usuario.funcao}"/>
+                                        </td>
+                                        <td>
+                                        <h:form>
+                                            <h:commandButton value="Excluir" action="#{registroUsuario.excluir(usuario)}"/>
+                                        </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                <section class="col-lg-8 conteudo">
+
+                    <div class="usuario">
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th><h:outputLabel value="Descrição:"/></th>
+                                    <th><h:outputLabel value="Status:"/></th>
+                                    <th><h:outputText value="Opções"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="usuario" value="#{registroTarefa.lista}">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{tarefa.descricao}"/>
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{tarefa.status}"/>
+                                        </td>
+                                        <td>
+                                        <h:form>
+                                            <h:commandButton value="Excluir" action="#{registroTarefa.excluirTarefa(tarefa)}"/>
+                                        </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </section>
                 
-                <section class="conteudo">
-                    <ui:repeat var="tarefa" value="#{registroTarefa.lista}">
-                        <div class="tarefa">
-                            <h:outputLabel for="descricao" value="Descrição:"/>
-                            <h:outputText id="descricao" value="#{tarefa.descricao}"/>
-                            <h:outputLabel for="status" value="Status:"/>
-                            <h:outputText id="status" value="#{tarefa.status}"/>
-                            <h:form>
-                                <h:commandButton value="Excluir" action="#{registroTarefa.excluirTarefa(tarefa)}"/>
-                            </h:form>
-                        </div>
-                    </ui:repeat>
-                </section>
 
                 <section class="col-lg-12">
                     <div class="fundo">
-                        
+
                     </div>
-                    
+
                     <div class="col-lg-3 cadastro">
                         <h:form class="ui large label black form">
                             <div class="col-lg-12">
@@ -74,7 +112,7 @@
                                 <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.funcao}" p:placeholder="funcao"/>
                             </div>
                             <div class="col-lg-12">
-                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{registroUsuario.adicionar()}"/>
+                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{registroUsuario.adicionarUsuario()}"/>
                             </div>
                         </h:form>
                     </div>
@@ -83,14 +121,14 @@
                             <div class="col-lg-12">
                                 <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.titulo}" p:placeholder="titulo"/>
                                 <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.descricao}" p:placeholder="descricao"/>
-                                <!--<h:selectOneMenu>
+                                <h:selectOneMenu>
                                     <f:selectItems var="usuario" value="#{registroUsuario.lista}" itemValue="#{registroTarefa.tarefaAdd.usuario}" itemLabel="#{usuario.nome}" />
                                 </h:selectOneMenu>
-                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataInicio}"  p:placeholder="data inicio">
-                                    <f:converter converterId="localDateConverter"/>
+                                <!--<h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataInicio}"  p:placeholder="data inicio" id="dataInicio">
+                                    <f:converter converterId="localDateConverter" for="dataInicio"/>
                                 </h:inputText>
-                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataLimite}" p:placeholder="data limite">
-                                    <f:converter converterId="localDateConverter"/>
+                                <h:inputText class="col-lg-12" value="#{registroTarefa.tarefaAdd.dataLimite}" p:placeholder="data limite" id="dataLimite">
+                                    <f:converter converterId="localDateConverter" for="dataLimite"/>
                                 </h:inputText>-->
                             </div>
                             <div class="col-lg-12">
@@ -99,8 +137,8 @@
                         </h:form>
                     </div>
                 </section>
-      
-                
+
+
                 <h:outputScript name="/script/funcoesAdm.js"></h:outputScript>
             </h:body>
         </ui:define>
