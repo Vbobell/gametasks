@@ -19,7 +19,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(filterName = "FiltroAcesso", urlPatterns = {"/faces/usuario.xhtml"})
+@WebFilter(filterName = "FiltroAcesso", urlPatterns = {"/faces/administracao.xhtml"})
 public class FiltroAcesso implements Filter {
 
     //Obtendo o objeto UsuarioMB da sess�o

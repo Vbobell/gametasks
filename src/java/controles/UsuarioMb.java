@@ -55,8 +55,13 @@ public class UsuarioMb implements Serializable {
             contexto.addMessage(null, mensagem);
             return ("index");
         } else {
-            logado = true;
-            return ("usuario?faces-redirect=true");
+            if(!usuario.getNome().equals("admin")){
+                logado = true;
+                return ("usuario?faces-redirect=true");
+            }else{
+                logado = true;
+                return ("administracao?faces-redirect=true");
+            }
         }
     }
 

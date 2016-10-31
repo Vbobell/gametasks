@@ -10,5 +10,29 @@ package modelos;
  * @author vinic
  */
 public class QuadroTarefa {
+    private Usuario usuario;
+    private Tarefa tarefa;
+
+    public QuadroTarefa() {
+        tarefa = new Tarefa();
+        usuario = new Usuario();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Tarefa getTarefa() {
+        return tarefa;
+    }
+
+    public void setTarefa(Tarefa tarefa) {
+        this.tarefa = tarefa;
+    }
+    
     
 }

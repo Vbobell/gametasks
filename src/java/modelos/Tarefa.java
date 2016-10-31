@@ -17,7 +17,6 @@ public class Tarefa {
     private String titulo, descricao, status, cpf, dataInicioString, dataFimString;
     private int valor;
     private LocalDate dataInicio, dataLimite;
-    private Usuario usuario;
     
     public Tarefa() {
 
@@ -111,23 +110,5 @@ public class Tarefa {
     public String toString() {
         return "Tarefa{" + "idTarefa=" + idTarefa + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status + ", cpf=" + cpf + ", valor=" + valor + ", dataInicio=" + dataInicio + ", dataLimite=" + dataLimite + '}';
     }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-    
-    
-
+ 
 }

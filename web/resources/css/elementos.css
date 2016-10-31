@@ -38,3 +38,11 @@ ui.massive.label.black.rgba, .ui.massive.label{
     display: block;
     transition: 1s ease;
 }
+ul#javax_faces_developmentstage_messages {
+    position: fixed;
+    left: 40%;
+    top: 200px;
+    background-color: #013237;
+    padding: 5% 10%;
+    z-index: 9999;
+}

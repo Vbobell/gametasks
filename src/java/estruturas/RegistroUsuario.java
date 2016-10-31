@@ -34,11 +34,11 @@ public class RegistroUsuario {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Usuario já cadastrado.");
             contexto.addMessage("idMensagem", mensagem);
-            return ("usuario");    
+            return ("administracao?faces-redirect=true");    
         } else{
             lista.add(usuarioAdd);
             this.usuarioAdd = new Usuario();
-            return("usuario");
+            return("administracao?faces-redirect=true");
         }
     }
     public boolean buscarUsuarioLogin(Usuario u){
@@ -67,7 +67,7 @@ public class RegistroUsuario {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Usuario removido");
             contexto.addMessage("idMensagem", mensagem);
-            return ("usuario?faces-redirect=true");
+            return ("administracao?faces-redirect=true");
         } 
 
     public void setList(List<Usuario> lista){

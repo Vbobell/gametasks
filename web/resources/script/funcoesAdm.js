@@ -24,6 +24,9 @@
             case 'mostraTarefa':
                 $('.conteudo:nth(1)').slideDown();
             break;
+             case 'mostraQuadro':
+                $('.conteudo:nth(2)').slideDown();
+            break;
         }      
     });
     $('.cadastro').click(function(event){

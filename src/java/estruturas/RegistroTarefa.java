@@ -22,24 +22,15 @@ import modelos.Tarefa;
 public class RegistroTarefa {
 
    private Tarefa tarefaAdd;
-    private List<Tarefa> lista = new ArrayList();
+   private List<Tarefa> lista = new ArrayList();
     
     public RegistroTarefa() {
        tarefaAdd = new Tarefa();
-       lista.add(new Tarefa("teste","teste"));
     }
 
-    public String adicionarTarefa() {
-        if (buscarTarefa(tarefaAdd) != null) {
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Tarefa já cadastrado.");
-            contexto.addMessage("idMensagem", mensagem);
-            return ("usuario");    
-        } else{
-            lista.add(tarefaAdd);
-            this.tarefaAdd = new Tarefa();
-            return("usuario");
-        }
+    public void adicionarTarefa(Tarefa t) {
+            lista.add(t);
+            //this.tarefaAdd = new Tarefa();
     }
 
     public Tarefa buscarTarefa(Tarefa t) {
@@ -56,7 +47,7 @@ public class RegistroTarefa {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"","Tarefa removido");
             contexto.addMessage("idMensagem", mensagem);
-            return ("usuario?faces-redirect=true");
+            return ("administracao?faces-redirect=true");
         } 
 
     public void setList(List<Tarefa> lista){
