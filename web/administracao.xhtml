@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Projeto Login</title>
+    </h:head>
+    <ui:composition template="./links.xhtml">
+        <ui:define name="body">
+            <h:body class="corpoPaginaInicial">
+
+                <header class="col-xs-12 col-md-12 col-lg-3 ui massive label black menuLateral">
+                    <div class="infoUsuario">
+                        <h:outputText value="Seja bem vindo, #{usuarioMb.usuario.nome}" />
+                        <h:form>
+                            <h:commandLink value="Logout" action="#{usuarioMb.realizaLogout()}"/>
+                        </h:form>
+                    </div>
+                    <section class="ui vertical massive menu">
+                        <div class="ui header opcaoMenu">Menu usuário
+                            <div class="ui borderless item button botaoMenu" id="adicionarUsuario">Adicionar usuário</div>
+                            <div class="ui borderless item button botaoMenu" id="mostraUsuario">Mostrar usuário</div>
+                        </div>
+                        <div class="ui header opcaoMenu">Menu tarefa
+                            <div class="ui borderless item button botaoMenu" id="adicionarTarefa">Adicionar tarefa</div>
+                            <div class="ui borderless item button botaoMenu" id="mostraTarefa">Mostrar tarefa</div>
+                        </div>
+                        <div class="ui header opcaoMenu">Menu Quadro Tarefa
+                            <div class="ui borderless item button botaoMenu" id="mostraQuadro">Mostrar quadro</div>
+                        </div>
+                    </section>
+                </header>
+
+                <section class="col-lg-8 conteudo">
+
+                    <div class="usuario">
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th><h:outputLabel value="Nome"/></th>
+                                    <th><h:outputLabel value="Função"/></th>
+                                    <th><h:outputText value="Opções"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="usuario" value="#{registroUsuario.lista}">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{usuario.nome}"/>
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{usuario.funcao}"/>
+                                        </td>
+                                        <td>
+                                        <h:form>
+                                            <h:commandButton value="Excluir" action="#{registroUsuario.excluir(usuario)}"/>
+                                        </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                <section class="col-lg-8 conteudo">
+
+                    <div class="usuario">
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th><h:outputLabel value="Descrição"/></th>
+                                    <th><h:outputLabel value="Status"/></th>
+                                    <th><h:outputLabel value="Pontuação"/></th>
+                                    <th><h:outputText value="Opções"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="tarefa" value="#{registroQuadroTarefa.registroTarefa.lista}">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{tarefa.titulo}"/>
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{tarefa.descricao}"/>
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{tarefa.valor}"/>
+                                        </td>
+                                        <td>
+                                        <h:form>
+                                            <h:commandButton value="Excluir" action="#{registroQuadroTarefa.registroTarefa.excluirTarefa(tarefa)}"/>
+                                        </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                
+                <section class="col-lg-8 conteudo">
+
+                    <div class="usuario">
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th><h:outputLabel value="Usuario"/></th>
+                                    <th><h:outputLabel value="Tarefa"/></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="quadro" value="#{registroQuadroTarefa.lista}">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{quadro.usuario.nome}"/>
+                                        </td>
+                                        <td>
+                                            <h:outputText value="#{quadro.tarefa.titulo}"/>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                
+                
+                <section class="col-lg-12">
+                    <div class="fundo">
+
+                    </div>
+
+                    <div class="col-lg-3 cadastro">
+                        <h:form class="ui large label black form">
+                            <div class="col-lg-12">
+                                <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.nome}" p:placeholder="nome"/>
+                                <h:inputSecret class="col-lg-12" value="#{registroUsuario.usuarioAdd.senha}" p:placeholder="senha"/>
+                                <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.cpf}"  p:placeholder="CPF"/>
+                                <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.funcao}" p:placeholder="funcao"/>
+                            </div>
+                            <div class="col-lg-12">
+                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{registroUsuario.adicionarUsuario()}"/>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="col-lg-3 cadastro">
+                        <h:form class="ui large label black form">
+                            <div class="col-lg-12">
+                                <h:inputText class="col-lg-12" value="#{registroQuadroTarefa.quadroAdd.tarefa.titulo}" p:placeholder="titulo"/>
+                                <h:inputText class="col-lg-12" value="#{registroQuadroTarefa.quadroAdd.tarefa.descricao}" p:placeholder="descricao"/>
+                                <h:selectOneMenu value="#{registroQuadroTarefa.quadroAdd.usuario.nome}">
+                                    <f:selectItems var="usuario" value="#{registroUsuario.lista}" itemValue="#{usuario.nome}" itemLabel="#{usuario.nome}" />
+                                </h:selectOneMenu>
+                                <!--<h:inputText class="col-lg-12" value="#{registroQuadroTarefa.quadroAdd.tarefa.dataInicio}"  p:placeholder="data inicio" id="dataInicio">
+                                    <f:converter converterId="localDateConverter" for="dataInicio"/>
+                                </h:inputText>
+                                <h:inputText class="col-lg-12" value="#{registroQuadroTarefa.quadroAdd.tarefa.dataLimite}" p:placeholder="data limite" id="dataLimite">
+                                    <f:converter converterId="localDateConverter" for="dataLimite"/>
+                                </h:inputText>-->
+                            </div>
+                            <div class="col-lg-12">
+                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{registroQuadroTarefa.adicionarTarefaQuadro()}"/>
+                            </div>
+                        </h:form>
+                    </div>
+                </section>
+
+
+                <h:outputScript name="/script/funcoesAdm.js"></h:outputScript>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+

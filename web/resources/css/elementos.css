@@ -1,0 +1,48 @@
+
+input[type="text"],input[type="password"]{
+    margin:0 0 10px 0 !important;
+    color:#000;
+}
+.ui.large.form{
+    z-index: 2;
+}
+.ui.massive.vertical.menu {
+    width: 100%;
+}
+.ui.massive.label{
+    padding-top: 50px;
+    text-align: center;
+    margin-left: -3px;
+}
+ui.massive.label.black.rgba, .ui.massive.label{
+    background-color: rgba(000,000,000,0.7) !important;
+    border-radius:0;
+}
+.conteudo, .cadastro{
+    display:none;
+}
+.cadastro{
+    padding:10px;
+    position: fixed;
+    left: 35%;
+    top: 30%;
+    transition: 1s ease;
+    border-radius:0;
+}
+
+.cadastro label.col-lg-12 {
+    padding: 4px !important;
+}
+
+.displayBlock{
+    display: block;
+    transition: 1s ease;
+}
+ul#javax_faces_developmentstage_messages {
+    position: fixed;
+    left: 40%;
+    top: 200px;
+    background-color: #013237;
+    padding: 5% 10%;
+    z-index: 9999;
+}
