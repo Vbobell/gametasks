@@ -5,15 +5,14 @@
  */
 package controles;
 
-import estruturas.RegistroUsuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import modelos.Usuario;
+import modelos.EntidadeUsuario;
+import sessao.UsuarioFacade;
 
 /**
  *
@@ -21,18 +20,19 @@ import modelos.Usuario;
  */
 @Named(value = "usuarioMb")
 @SessionScoped
-
 public class UsuarioMb implements Serializable {
 
     private boolean logado;
-    private Usuario usuario;
-    
-    @Inject
-    RegistroUsuario registroUsuario;
-    //private UsuarioDao registro;
+    private EntidadeUsuario usuario, usuarioControle;
+    private ControleUsuario transacaoUsuario;
+    @EJB
+    private UsuarioFacade operacao;
 
     public UsuarioMb() { 
-        usuario = new Usuario();
+        usuario = new EntidadeUsuario();
+        usuarioControle = new EntidadeUsuario();
+        transacaoUsuario = new ControleUsuario();
+        operacao = new UsuarioFacade();
         logado = false;
     }
 
@@ -40,22 +40,30 @@ public class UsuarioMb implements Serializable {
         return logado;
     }
 
-    public Usuario getUsuario() {
+    public EntidadeUsuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(EntidadeUsuario usuario) {
         this.usuario = usuario;
     }
 
+    public EntidadeUsuario getUsuarioControle() {
+        return usuarioControle;
+    }
+
+    public void setUsuarioControle(EntidadeUsuario usuarioControle) {
+        this.usuarioControle = usuarioControle;
+    }
+    
     public String verificaLogin() {
-        if (registroUsuario.buscarUsuarioLogin(usuario) == false) {
+        if (operacao.verificaUsuario(usuario.getCpf(),usuario.getSenha()) == false) {
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Login inválido"," Usuário ou senha está errado!");
             contexto.addMessage(null, mensagem);
             return ("index");
         } else {
-            if(!usuario.getNome().equals("admin")){
+            if(!usuario.getCpf().equals("00000")){
                 logado = true;
                 return ("usuario?faces-redirect=true");
             }else{
@@ -71,5 +79,17 @@ public class UsuarioMb implements Serializable {
         logado = false;
         return ("index?faces-redirect=true");
     }
-
+    
+    public String adicionarUsuario(){
+        boolean adicionar = transacaoUsuario.adicionarUsuario(usuarioControle);
+        
+        if(adicionar != true){
+            FacesContext contexto = FacesContext.getCurrentInstance();
+            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Usuario já cadastrado.");
+            contexto.addMessage("idMensagem", mensagem);
+            return ("administracao?faces-redirect=true"); 
+        }else{
+            return ("administracao?faces-redirect=true"); 
+        }
+    }
 }

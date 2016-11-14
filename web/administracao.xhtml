@@ -140,13 +140,13 @@
                     <div class="col-lg-3 cadastro">
                         <h:form class="ui large label black form">
                             <div class="col-lg-12">
-                                <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.nome}" p:placeholder="nome"/>
-                                <h:inputSecret class="col-lg-12" value="#{registroUsuario.usuarioAdd.senha}" p:placeholder="senha"/>
-                                <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.cpf}"  p:placeholder="CPF"/>
-                                <h:inputText class="col-lg-12" value="#{registroUsuario.usuarioAdd.funcao}" p:placeholder="funcao"/>
+                                <h:inputText class="col-lg-12" value="#{usuarioMb.usuarioControle.nome}" p:placeholder="nome"/>
+                                <h:inputSecret class="col-lg-12" value="#{usuarioMb.usuarioControle.senha}" p:placeholder="senha"/>
+                                <h:inputText class="col-lg-12" value="#{usuarioMb.usuarioControle.cpf}"  p:placeholder="CPF"/>
+                                <h:inputText class="col-lg-12" value="#{usuarioMb.usuarioControle.funcao}" p:placeholder="funcao"/>
                             </div>
                             <div class="col-lg-12">
-                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{registroUsuario.adicionarUsuario()}"/>
+                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{usuarioMb.adicionarUsuario()}"/>
                             </div>
                         </h:form>
                     </div>

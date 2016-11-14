@@ -17,7 +17,7 @@
                 <h:outputLabel class="ui pointing below label row" value="Login" for="nomeUsuario"/>
                 <div class="col-xs-12 col-md-12 fields centered row">
                 <div class="col-xs-12 col-md-12 field">
-                <h:inputText class="col-xs-12 col-md-12"  p:placeholder="Usuario" value="#{usuarioMb.usuario.nome}" id="nomeUsuario"/>
+                    <h:inputText class="col-xs-12 col-md-12"  p:placeholder="Usuario" value="#{usuarioMb.usuario.cpf}" id="nomeUsuario"/>
                 <h:inputSecret class="col-xs-12 col-md-12" p:placeholder="Senha" value="#{usuarioMb.usuario.senha}" id="senhaUsuario"/>    
                 <h:commandButton class="col-xs-12 col-md-12 ui positive button" value="Começar o jogo" action="#{usuarioMb.verificaLogin()}" />
                 </div>
