@@ -5,43 +5,61 @@
  */
 package controles;
 
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.util.List;
+import javax.inject.Inject;
 import modelos.EntidadeUsuario;
-import modelos.Usuario;
 import sessao.UsuarioFacade;
 
 /**
  *
- * @author vinic
+ * @author 181301742
  */
-public class ControleUsuario {
-    private EntidadeUsuario usuario;
-    @EJB
+@Named(value = "controleUsuario")
+@SessionScoped
+public class ControleUsuario implements Serializable {
+    private EntidadeUsuario usuarioControle;
+    @Inject
     private UsuarioFacade operacao;
-
+    /**
+     * Creates a new instance of ControleUsuario
+     */
     public ControleUsuario() {
-        usuario = new EntidadeUsuario();
-        operacao = new UsuarioFacade();
+        usuarioControle = new EntidadeUsuario();
     }
 
-    public Boolean adicionarUsuario(EntidadeUsuario u) {
-        this.usuario = u;
-        if (buscarUsuario(usuario) != null) {
-            return false;
-        } else {
-            operacao.create(usuario);
-            this.usuario = new EntidadeUsuario();
-            return true;
-        }
+    public EntidadeUsuario getUsuarioControle() {
+        return usuarioControle;
     }
 
-    public EntidadeUsuario buscarUsuario(EntidadeUsuario u) {
-       EntidadeUsuario busca = operacao.find(u);
-        if(busca != null)
-            return null;
-        else
-            return busca;
+    public void setUsuarioControle(EntidadeUsuario usuarioControle) {
+        this.usuarioControle = usuarioControle;
+    }
+    
+    
+        public String adicionarUsuario(){
+        
+        operacao.create(usuarioControle);
+        return ("administracao?faces-redirect=true"); 
+        /*if(adicionar != true){
+            FacesContext contexto = FacesContext.getCurrentInstance();
+            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Usuario já cadastrado.");
+            contexto.addMessage("idMensagem", mensagem);
+            return ("administracao?faces-redirect=true"); 
+        }else{
+            return ("administracao?faces-redirect=true"); 
+        }*/
+    }
+    
+    public List<EntidadeUsuario> listaUsuario(){
+        return operacao.findAll();
+    }
+    
+    public String excluirUsuario(EntidadeUsuario u){
+        usuarioControle = u;
+        operacao.remove(usuarioControle);
+        return ("administracao?faces-redirect=true"); 
     }
 }

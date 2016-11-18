@@ -8,9 +8,11 @@ package controles;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import javax.ejb.EJB;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import modelos.EntidadeUsuario;
 import sessao.UsuarioFacade;
 
@@ -23,17 +25,23 @@ import sessao.UsuarioFacade;
 public class UsuarioMb implements Serializable {
 
     private boolean logado;
-    private EntidadeUsuario usuario, usuarioControle;
-    private ControleUsuario transacaoUsuario;
-    @EJB
+    private EntidadeUsuario usuario,usuarioControle;
+    @Inject
     private UsuarioFacade operacao;
-
+    
     public UsuarioMb() { 
         usuario = new EntidadeUsuario();
-        usuarioControle = new EntidadeUsuario();
-        transacaoUsuario = new ControleUsuario();
-        operacao = new UsuarioFacade();
         logado = false;
+    }
+    
+    @PostConstruct
+    public void preencheBanco(){
+       usuarioControle = new EntidadeUsuario();
+       usuarioControle.setNome("admin");
+       usuarioControle.setFuncao("admin");
+       usuarioControle.setCpf("00000");
+       usuarioControle.setSenha("123456");
+       operacao.create(usuarioControle);
     }
 
     public boolean isLogado() {
@@ -48,12 +56,12 @@ public class UsuarioMb implements Serializable {
         this.usuario = usuario;
     }
 
-    public EntidadeUsuario getUsuarioControle() {
-        return usuarioControle;
-    }
-
     public void setUsuarioControle(EntidadeUsuario usuarioControle) {
         this.usuarioControle = usuarioControle;
+    }
+    
+    public EntidadeUsuario getUsuarioControle() {
+        return usuarioControle;
     }
     
     public String verificaLogin() {
@@ -80,16 +88,5 @@ public class UsuarioMb implements Serializable {
         return ("index?faces-redirect=true");
     }
     
-    public String adicionarUsuario(){
-        boolean adicionar = transacaoUsuario.adicionarUsuario(usuarioControle);
-        
-        if(adicionar != true){
-            FacesContext contexto = FacesContext.getCurrentInstance();
-            FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Usuario já cadastrado.");
-            contexto.addMessage("idMensagem", mensagem);
-            return ("administracao?faces-redirect=true"); 
-        }else{
-            return ("administracao?faces-redirect=true"); 
-        }
-    }
+
 }

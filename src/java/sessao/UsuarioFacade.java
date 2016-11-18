@@ -18,7 +18,7 @@ import modelos.EntidadeUsuario;
 @Stateless
 public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
 
-    @PersistenceContext(unitName = "gameTasksPU")
+    @PersistenceContext(unitName = "GameTasksPU")
     private EntityManager eManager;
     
     @Override
@@ -40,4 +40,5 @@ public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
             else
                 return true;
     }
+    
 }

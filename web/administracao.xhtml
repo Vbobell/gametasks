@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <ui:repeat var="usuario" value="#{registroUsuario.lista}">
+                                <ui:repeat var="usuario" value="#{controleUsuario.listaUsuario()}">
                                     <tr>
                                         <td>
                                             <h:outputText value="#{usuario.nome}"/>
@@ -57,7 +57,7 @@
                                         </td>
                                         <td>
                                         <h:form>
-                                            <h:commandButton value="Excluir" action="#{registroUsuario.excluir(usuario)}"/>
+                                            <h:commandButton value="Excluir" action="#{controleUsuario.excluirUsuario(usuario)}"/>
                                         </h:form>
                                         </td>
                                     </tr>
@@ -140,13 +140,13 @@
                     <div class="col-lg-3 cadastro">
                         <h:form class="ui large label black form">
                             <div class="col-lg-12">
-                                <h:inputText class="col-lg-12" value="#{usuarioMb.usuarioControle.nome}" p:placeholder="nome"/>
-                                <h:inputSecret class="col-lg-12" value="#{usuarioMb.usuarioControle.senha}" p:placeholder="senha"/>
-                                <h:inputText class="col-lg-12" value="#{usuarioMb.usuarioControle.cpf}"  p:placeholder="CPF"/>
-                                <h:inputText class="col-lg-12" value="#{usuarioMb.usuarioControle.funcao}" p:placeholder="funcao"/>
+                                <h:inputText class="col-lg-12" value="#{controleUsuario.usuarioControle.nome}" p:placeholder="nome"/>
+                                <h:inputSecret class="col-lg-12" value="#{controleUsuario.usuarioControle.senha}" p:placeholder="senha"/>
+                                <h:inputText class="col-lg-12" value="#{controleUsuario.usuarioControle.cpf}"  p:placeholder="CPF"/>
+                                <h:inputText class="col-lg-12" value="#{controleUsuario.usuarioControle.funcao}" p:placeholder="funcao"/>
                             </div>
                             <div class="col-lg-12">
-                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{usuarioMb.adicionarUsuario()}"/>
+                                <h:commandButton class="ui positive button" value="Cadastrar" action="#{controleUsuario.adicionarUsuario()}"/>
                             </div>
                         </h:form>
                     </div>
@@ -158,10 +158,10 @@
                                 <h:selectOneMenu value="#{registroQuadroTarefa.quadroAdd.usuario.nome}">
                                     <f:selectItems var="usuario" value="#{registroUsuario.lista}" itemValue="#{usuario.nome}" itemLabel="#{usuario.nome}" />
                                 </h:selectOneMenu>
-                                <!--<h:inputText class="col-lg-12" value="#{registroQuadroTarefa.quadroAdd.tarefa.dataInicio}"  p:placeholder="data inicio" id="dataInicio">
+                                <!--<h:inputText class="col-lg-12" value="#//{registroQuadroTarefa.quadroAdd.tarefa.dataInicio}"  p:placeholder="data inicio" id="dataInicio">
                                     <f:converter converterId="localDateConverter" for="dataInicio"/>
                                 </h:inputText>
-                                <h:inputText class="col-lg-12" value="#{registroQuadroTarefa.quadroAdd.tarefa.dataLimite}" p:placeholder="data limite" id="dataLimite">
+                                <h:inputText class="col-lg-12" value="#//{registroQuadroTarefa.quadroAdd.tarefa.dataLimite}" p:placeholder="data limite" id="dataLimite">
                                     <f:converter converterId="localDateConverter" for="dataLimite"/>
                                 </h:inputText>-->
                             </div>

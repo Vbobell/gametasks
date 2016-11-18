@@ -5,7 +5,7 @@
  */
 package modelos;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Tarefa {
     private int idTarefa;
     private String titulo, descricao, status, cpf, dataInicioString, dataFimString;
     private int valor;
-    private LocalDate dataInicio, dataLimite;
+    //private LocalDate dataInicio, dataLimite;
     
     public Tarefa() {
 
@@ -26,12 +26,12 @@ public class Tarefa {
         this.descricao = descricao;
     }
     
-    public Tarefa(String titulo, String descricao, String cpf, LocalDate dataInicio, LocalDate dataLimite) {
+    public Tarefa(String titulo, String descricao, String cpf/*, LocalDate dataInicio, LocalDate dataLimite*/) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.cpf = cpf;
-        this.dataInicio = dataInicio;
-        this.dataLimite = dataLimite;
+        //this.dataInicio = dataInicio;
+        //this.dataLimite = dataLimite;
     }
 
     public void setIdTarefa(int idTarefa) {
@@ -54,13 +54,13 @@ public class Tarefa {
         this.valor = valor;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
+    /*public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
     public void setDataLimite(LocalDate dataLimite) {
         this.dataLimite = dataLimite;
-    }
+    }*/
 
     public void setDataInicioString(String dataInicioString) {
         this.dataInicioString = dataInicioString;
@@ -90,13 +90,13 @@ public class Tarefa {
         return valor;
     }
 
-    public LocalDate getDataInicio() {
+    /*public LocalDate getDataInicio() {
         return dataInicio;
     }
 
     public LocalDate getDataLimite() {
         return dataLimite;
-    }
+    }*/
 
     public String getDataInicioString() {
         return dataInicioString;
@@ -106,9 +106,9 @@ public class Tarefa {
         return dataFimString;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Tarefa{" + "idTarefa=" + idTarefa + ", titulo=" + titulo + ", descricao=" + descricao + ", status=" + status + ", cpf=" + cpf + ", valor=" + valor + ", dataInicio=" + dataInicio + ", dataLimite=" + dataLimite + '}';
-    }
+    }*/
  
 }

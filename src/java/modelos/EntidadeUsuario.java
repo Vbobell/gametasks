@@ -23,6 +23,9 @@ public class EntidadeUsuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
      private String nome, senha, cpf, funcao;
+
+    public EntidadeUsuario() {
+    }
     
     public Long getId() {
         return id;
