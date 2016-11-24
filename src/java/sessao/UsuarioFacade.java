@@ -40,5 +40,14 @@ public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
             else
                 return true;
     }
+    public Boolean verificaUsuarioAdicionar(String cpf){
+        Query q = eManager.createQuery("select u from EntidadeUsuario u where u.cpf = :cpf");
+        q.setParameter("cpf", cpf);
+        List<EntidadeUsuario> verifica = q.getResultList();
+            if(verifica.isEmpty())
+                return false;
+            else
+                return true;
+    }
     
 }

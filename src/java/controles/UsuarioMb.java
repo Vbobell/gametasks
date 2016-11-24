@@ -34,7 +34,7 @@ public class UsuarioMb implements Serializable {
         logado = false;
     }
     
-    @PostConstruct
+    /*@PostConstruct
     public void preencheBanco(){
        usuarioControle = new EntidadeUsuario();
        usuarioControle.setNome("admin");
@@ -42,7 +42,7 @@ public class UsuarioMb implements Serializable {
        usuarioControle.setCpf("00000");
        usuarioControle.setSenha("123456");
        operacao.create(usuarioControle);
-    }
+    }*/
 
     public boolean isLogado() {
         return logado;

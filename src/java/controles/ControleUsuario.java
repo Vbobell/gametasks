@@ -9,6 +9,8 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import modelos.EntidadeUsuario;
 import sessao.UsuarioFacade;
@@ -40,15 +42,15 @@ public class ControleUsuario implements Serializable {
     
     
         public String adicionarUsuario(){
-        
-        operacao.create(usuarioControle);
-        return ("administracao?faces-redirect=true"); 
-        /*if(adicionar != true){
+            operacao.create(usuarioControle);
+            return ("administracao?faces-redirect=true"); 
+        /*if(operacao.verificaUsuarioAdicionar(usuarioControle.getCpf())==false){
             FacesContext contexto = FacesContext.getCurrentInstance();
             FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro!","Usuario já cadastrado.");
             contexto.addMessage("idMensagem", mensagem);
             return ("administracao?faces-redirect=true"); 
         }else{
+            operacao.create(usuarioControle);
             return ("administracao?faces-redirect=true"); 
         }*/
     }
