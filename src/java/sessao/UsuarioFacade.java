@@ -21,6 +21,8 @@ public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
     @PersistenceContext(unitName = "GameTasksPU")
     private EntityManager eManager;
     
+    private List<EntidadeUsuario> verifica;
+    
     @Override
     protected EntityManager getEntityManager() {
         return eManager;
@@ -34,7 +36,7 @@ public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
         Query q = eManager.createQuery("select u from EntidadeUsuario u where u.cpf = :cpf and u.senha = :senha");
         q.setParameter("cpf", cpf);
         q.setParameter("senha", senha);
-        List<EntidadeUsuario> verifica = q.getResultList();
+        verifica = q.getResultList();
             if(verifica.isEmpty())
                 return false;
             else
@@ -43,11 +45,15 @@ public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
     public Boolean verificaUsuarioAdicionar(String cpf){
         Query q = eManager.createQuery("select u from EntidadeUsuario u where u.cpf = :cpf");
         q.setParameter("cpf", cpf);
-        List<EntidadeUsuario> verifica = q.getResultList();
+        verifica = q.getResultList();
             if(verifica.isEmpty())
                 return false;
             else
                 return true;
+    }
+
+    public List<EntidadeUsuario> getVerifica() {
+        return verifica;
     }
     
 }

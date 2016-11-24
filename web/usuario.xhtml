@@ -13,7 +13,7 @@
 
                 <header class="col-xs-12 col-md-12 col-lg-3 ui massive label black menuLateral">
                     <div class="infoUsuario">
-                        <h:outputText value="Seja bem vindo, #{usuarioMb.usuario.nome}" />
+                        <h:outputText value="Seja bem vindo, #{usuarioMb.usuarioControle.nome}" />
                         <h:form>
                             <h:commandLink value="Logout" action="#{usuarioMb.realizaLogout()}"/>
                         </h:form>
@@ -42,11 +42,11 @@
                                     <th><h:outputLabel value="Usuario"/></th>
                                     <th><h:outputLabel value="Tarefa"/></th>
                                     <th><h:outputLabel value="Pontos"/></th>
-                                    <th><h:outputLabel value="Data"/></th>
+                                    <!--<th><h:outputLabel value="Data"/></th>-->
                                 </tr>
                             </thead>
                             <tbody>
-                                <ui:repeat var="quadro" value="#{registroQuadroTarefa.lista}">
+                                <ui:repeat var="quadro" value="#{controleQuadroTarefa.listaQuadroTarefa()}">
                                     <tr>
                                         <td>
                                             <h:outputText value="#{quadro.usuario.nome}"/>
@@ -57,9 +57,9 @@
                                         <td>
                                             <h:outputText value="#{quadro.tarefa.valor}"/>
                                         </td>
-                                        <td>
-                                            <h:outputText value="#{quadro.tarefa.dataLimite}"/>
-                                        </td>
+                                        <!--<td>
+                                            <h:outputText value="#//{quadro.tarefa.dataLimite}"/>
+                                        </td>-->
                                     </tr>
                                 </ui:repeat>
                             </tbody>

@@ -73,9 +73,11 @@ public class UsuarioMb implements Serializable {
         } else {
             if(!usuario.getCpf().equals("00000")){
                 logado = true;
+                usuarioControle = operacao.getVerifica().get(0);
                 return ("usuario?faces-redirect=true");
             }else{
                 logado = true;
+                usuarioControle = operacao.getVerifica().get(0);
                 return ("administracao?faces-redirect=true");
             }
         }

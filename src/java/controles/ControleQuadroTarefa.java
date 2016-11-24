@@ -8,6 +8,7 @@ package controles;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.inject.Inject;
 import modelos.EntidadeQuadroTarefa;
 import sessao.QuadroFacade;
@@ -42,6 +43,16 @@ public class ControleQuadroTarefa implements Serializable {
      public String adicionarTarefaQuadro(){
         controleTarefa.adicionarTarefa(quadroControle.getTarefa());
         operacao.create(quadroControle);
+        return ("administracao?faces-redirect=true"); 
+    }
+     
+     public List<EntidadeQuadroTarefa> listaQuadroTarefa(){
+        return operacao.findAll();
+    }
+    
+    public String excluirUsuario(EntidadeQuadroTarefa qt){
+        quadroControle = qt;
+        operacao.remove(quadroControle);
         return ("administracao?faces-redirect=true"); 
     }
     
