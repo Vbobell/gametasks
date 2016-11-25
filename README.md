@@ -1,7 +1,10 @@
 # gametasks
 
-Trabalho realizado na linguagem Java utilizando Java EE com JSF e JPA.
+Projeto envolvendo a criação de usuários e tarefas, relacionando-os em um quadro de tarefas. Está manipulação dos registro é 
+feita através de uma área administrativa.
+O usuário possue uma página especifica para visualizar suas tarefas.
 
 # Funcionalidades
 
-manipulação de usuário, tarefa e quadro de tarefas, duas opções de login administrativo e usuário.
+Trabalho realizado na linguagem Java utilizando Java EE com JSF e JPA.
+
