@@ -22,6 +22,8 @@ import sessao.QuadroFacade;
 public class ControleQuadroTarefa implements Serializable {
     private EntidadeQuadroTarefa quadroControle;
     @Inject
+    private ControleUsuario controleUsuario;
+    @Inject
     private ControleTarefa controleTarefa;
     @Inject
     private QuadroFacade operacao;
@@ -50,10 +52,29 @@ public class ControleQuadroTarefa implements Serializable {
         return operacao.findAll();
     }
     
-    public String excluirUsuario(EntidadeQuadroTarefa qt){
+    public String excluirQuadro(EntidadeQuadroTarefa qt){
         quadroControle = qt;
         operacao.remove(quadroControle);
+        controleTarefa.excluirTarefa(qt.getTarefa());
         return ("administracao?faces-redirect=true"); 
+    }
+    
+    public String editar(EntidadeQuadroTarefa qt){
+         quadroControle = qt;
+         return "editarTarefa?faces-redirect=true";
+    }
+    
+    public String atualizarQuadroTarefa(){
+         if(quadroControle.getTarefa().getStatus().equals("fechada")){
+           controleUsuario.atribuirPontuacao(quadroControle.getTarefa().getValor(),quadroControle.getUsuario().getCpf());
+         }
+         controleTarefa.editar(quadroControle.getTarefa());
+         operacao.edit(quadroControle);
+         return ("administracao?faces-redirect=true");
+    }
+
+    public QuadroFacade getOperacao() {
+        return operacao;
     }
     
 }

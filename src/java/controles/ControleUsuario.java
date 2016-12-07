@@ -23,6 +23,7 @@ import sessao.UsuarioFacade;
 @SessionScoped
 public class ControleUsuario implements Serializable {
     private EntidadeUsuario usuarioControle;
+
     @Inject
     private UsuarioFacade operacao;
     /**
@@ -58,10 +59,27 @@ public class ControleUsuario implements Serializable {
     public List<EntidadeUsuario> listaUsuario(){
         return operacao.findAll();
     }
+  
+    public List<EntidadeUsuario> ranking(){
+        return operacao.getLista();
+    }
     
     public String excluirUsuario(EntidadeUsuario u){
         usuarioControle = u;
-        operacao.remove(usuarioControle);
+        operacao.remove(usuarioControle);   
         return ("administracao?faces-redirect=true"); 
     }
+    
+    public String editar(EntidadeUsuario u){
+         usuarioControle = u;
+         return "editar?faces-redirect=true";
+    }
+    
+       public String atualizarUsuario(){
+         operacao.edit(usuarioControle);
+         return ("administracao?faces-redirect=true");
+        }
+       public void atribuirPontuacao(int pontos, String cpf){
+           operacao.atribuirPontuacao(pontos,cpf);
+       }
 }

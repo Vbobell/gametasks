@@ -20,9 +20,11 @@ import sessao.TarefaFacade;
 @Named(value = "controleTarefa")
 @SessionScoped
 public class ControleTarefa implements Serializable {
+
     private EntidadeTarefa tarefaControle;
     @Inject
     private TarefaFacade operacao;
+
     /**
      * Creates a new instance of ControleTarefa
      */
@@ -37,20 +39,30 @@ public class ControleTarefa implements Serializable {
     public void setTarefaControle(EntidadeTarefa tarefaControle) {
         this.tarefaControle = tarefaControle;
     }
-    
-    public String adicionarTarefa(EntidadeTarefa t){
+
+    public String adicionarTarefa(EntidadeTarefa t) {
         tarefaControle = t;
         operacao.create(tarefaControle);
-        return ("administracao?faces-redirect=true"); 
+        return ("administracao?faces-redirect=true");
     }
-    
-    public List<EntidadeTarefa> listaTarefa(){
+
+    public List<EntidadeTarefa> listaTarefa() {
         return operacao.findAll();
     }
-    
-     public String excluirTarefa(EntidadeTarefa t){
+
+    public String excluirTarefa(EntidadeTarefa t) {
         tarefaControle = t;
         operacao.remove(tarefaControle);
-        return ("administracao?faces-redirect=true"); 
+        return ("administracao?faces-redirect=true");
+    }
+
+    public void editar(EntidadeTarefa et) {
+        tarefaControle = et;
+        atualizarTarefa();
+    }
+
+    public void atualizarTarefa() {
+        operacao.edit(tarefaControle);
     }
 }
+

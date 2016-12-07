@@ -27,6 +27,9 @@
              case 'mostraQuadro':
                 $('.conteudo:nth(2)').slideDown();
             break;
+            case 'mostraRanking':
+                $('.conteudo:nth(3)').slideDown();
+            break;
         }      
     });
     $('.cadastro').click(function(event){
@@ -38,7 +41,12 @@
         $('.cadastro').slideUp();
     });
 
+    altura = $(window).height();
+    $('.menuLateral').css('height', altura);
+    $('.ui.vertical.massive.menu').css('height', altura-80);
     
-    
-
-
+    $(window).resize(function () {
+        altura = $(window).height();
+        $('.menuLateral').css('height', altura);
+        $('.ui.vertical.massive.menu').css('height', altura-80);
+    });

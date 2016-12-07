@@ -51,9 +51,19 @@ public class UsuarioFacade extends AbstractFacade<EntidadeUsuario>{
             else
                 return true;
     }
+    
+    public void atribuirPontuacao(int valor, String cpf){
+        Query q = eManager.createQuery("update EntidadeUsuario u SET u.pontuacao = :valor where u.cpf = :cpf");
+        q.setParameter("valor", valor);
+        q.setParameter("cpf", cpf);
+        q.executeUpdate();
+    }
 
     public List<EntidadeUsuario> getVerifica() {
         return verifica;
     }
-    
+    public List<EntidadeUsuario> getLista() {
+        Query q = eManager.createQuery("select u from EntidadeUsuario u ORDER BY u.pontuacao DESC");
+        return q.getResultList();
+    }
 }

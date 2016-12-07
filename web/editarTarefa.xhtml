@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Projeto Login</title>
+    </h:head>
+    <ui:composition template="./links.xhtml">
+        <ui:define name="body">
+            <style>
+                .cadastro{
+                    display: block !important;
+                }
+            </style>
+            <h:body class="corpoPaginaInicial">
+
+                <div class="col-lg-3 cadastro">
+                    <h:form class="ui large label black form">
+                        <div class="col-lg-12">
+                            <h:inputText class="col-lg-12" value="#{controleQuadroTarefa.quadroControle.tarefa.titulo}" p:placeholder="titulo" required="true"/>
+                            <h:inputText class="col-lg-12" value="#{controleQuadroTarefa.quadroControle.tarefa.descricao}" p:placeholder="descricao" required="true"/>
+                            <h:inputText class="col-lg-12" value="#{controleQuadroTarefa.quadroControle.tarefa.valor}" p:placeholder="pontos" required="true"/>
+                            <h:selectOneMenu value="#{controleQuadroTarefa.quadroControle.usuario.id}" required="true">
+                                <f:selectItems var="usuario" value="#{controleUsuario.listaUsuario()}" itemValue="#{usuario.id}" itemLabel="#{usuario.nome}" />
+                            </h:selectOneMenu>
+                            <h:selectOneMenu value="#{controleQuadroTarefa.quadroControle.tarefa.status}" required="true">
+                                    <f:selectItem itemValue="aberta" itemLabel="Aberta"/>
+                                    <f:selectItem itemValue="em andamento" itemLabel="Em andamento"/>
+                                    <f:selectItem itemValue="fechada" itemLabel="Fechada"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="col-lg-12">
+                            <h:commandButton class="ui positive button" value="Editar" action="#{controleQuadroTarefa.atualizarQuadroTarefa()}"/>
+                        </div>
+                    </h:form>
+                </div>
+                <h:outputScript name="/script/funcoesAdm.js"></h:outputScript>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+

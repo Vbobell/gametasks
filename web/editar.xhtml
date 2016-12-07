@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="./links.xhtml">
+        <ui:define name="body">
+            <style>
+                .cadastro{
+                    display: block !important;
+                }
+            </style>
+        <h:body class="corpoPaginaInicial">
+    <div class="col-lg-3 cadastro">
+        <h:form class="ui large label black form">
+            <div class="col-lg-12">
+                <h:inputText class="col-lg-12" value="#{controleUsuario.usuarioControle.nome}"/>
+                <h:inputSecret class="col-lg-12" value="#{controleUsuario.usuarioControle.senha}"/>
+                <h:inputText class="col-lg-12" value="#{controleUsuario.usuarioControle.cpf}"/>
+                <h:inputText class="col-lg-12" value="#{controleUsuario.usuarioControle.funcao}"/>
+            </div>
+            <div class="col-lg-12">
+                <h:commandButton class="ui positive button" value="Editar" action="#{controleUsuario.atualizarUsuario()}"/>
+            </div>
+        </h:form>
+    </div>
+            <h:outputScript name="/script/funcoesAdm.js"></h:outputScript>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+
