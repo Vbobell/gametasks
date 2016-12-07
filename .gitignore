@@ -49,6 +49,7 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+build.xml
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
@@ -65,3 +66,5 @@ $RECYCLE.BIN/
 /nbproject/
 /nbproject/private/
 /dist/
+/web/
+/test/
