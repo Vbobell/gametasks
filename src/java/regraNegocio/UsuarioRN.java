@@ -6,10 +6,12 @@
 package regraNegocio;
 
 
+import java.util.List;
 import modelos.EntidadeUsuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class UsuarioRN extends AbstractRN<EntidadeUsuario>{
@@ -22,6 +24,11 @@ public class UsuarioRN extends AbstractRN<EntidadeUsuario>{
     @Override
     protected EntityManager getEntityManager() {
          return manager;
+    }
+    
+    public List<EntidadeUsuario> getLista() {
+        Query q = manager.createQuery("select u from EntidadeUsuario u ORDER BY u.pontuacao DESC");
+        return q.getResultList();
     }
     
     public void salvar(EntidadeUsuario u)

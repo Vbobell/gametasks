@@ -24,8 +24,9 @@ public class EntidadeUsuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-     private String nome, senha, cpf, funcao;
-
+    private String nome, senha, cpf, funcao;
+    private int pontuacao;
+    
     public EntidadeUsuario() {
     }
     
@@ -67,6 +68,14 @@ public class EntidadeUsuario implements Serializable {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
+    public void setPontuacao(int pontuacao) {
+        this.pontuacao = pontuacao;
     }
     
     @Override

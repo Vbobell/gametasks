@@ -21,40 +21,54 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import regraNegocio.UsuarioRN;
-import modelos.EntidadeUsuario;
+import regraNegocio.QuadroRN;
+import modelos.EntidadeQuadroTarefa;
 
-@Path("usuarios")
-public class UsuarioWS {
+/**
+ * REST Web Service
+ *
+ * @author vinic
+ */
+@Path("QuadroTarefa")
+public class QuadroTarefaWS {
 
+    
     @EJB
-    private UsuarioRN usuarioRN;
-
+    private QuadroRN quadroRN;
+    
     @Context
     private UriInfo context;
 
-    public UsuarioWS() {
+    /**
+     * Creates a new instance of QuadroTarefaWS
+     */
+    public QuadroTarefaWS() {
     }
 
+    /**
+     * Retrieves representation of an instance of webServices.QuadroTarefaWS
+     * @param response
+     * @return an instance of modelos.EntidadeQuadroTarefa
+     */
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<EntidadeUsuario> getUsuarios(@Context final HttpServletResponse response) {
+    public List<EntidadeQuadroTarefa> getQuadroTarefa(@Context final HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        return usuarioRN.getLista();
+        return quadroRN.findAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public EntidadeUsuario getUsuario(@PathParam("id") long id,@Context final HttpServletResponse response) {
+    public EntidadeQuadroTarefa getQuadroTarefa(@PathParam("id") long id,@Context final HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        return usuarioRN.find(id);
+        return quadroRN.find(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_XML)
-    public void adicionarUsuario(EntidadeUsuario u, @Context final HttpServletResponse response) {
-        usuarioRN.salvar(u);
+    public void adicionarQuadroTarefa(EntidadeQuadroTarefa qt, @Context final HttpServletResponse response) {
+        quadroRN.create(qt);
         //Alterar o codigo para 201 (Created)
         response.setStatus(HttpServletResponse.SC_CREATED);
         try {
@@ -69,21 +83,19 @@ public class UsuarioWS {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_XML)
-    public void alterarUsuario(@PathParam("id") long id, EntidadeUsuario usuario) {
-        EntidadeUsuario u =usuarioRN.find(id);
-        u.setNome(usuario.getNome());
-        u.setCpf(usuario.getCpf());
-        u.setFuncao(usuario.getFuncao());
-        u.setSenha(usuario.getSenha());
-        usuarioRN.edit(u);
+    public void alterarQuadroTarefa(@PathParam("id") long id, EntidadeQuadroTarefa quadroTarefa) {
+        EntidadeQuadroTarefa qt =quadroRN.find(id);
+        qt.setUsuario(quadroTarefa.getUsuario());
+        qt.setTarefa(quadroTarefa.getTarefa());
+        quadroRN.edit(qt);
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public EntidadeUsuario removerUsuario(@PathParam("id") long id) {
-        EntidadeUsuario u =usuarioRN.find(id);
-        usuarioRN.remove(u);
-        return u;
+    public EntidadeQuadroTarefa removerQuadroTarefa(@PathParam("id") long id) {
+        EntidadeQuadroTarefa qt =quadroRN.find(id);
+        quadroRN.remove(qt);
+        return qt;
     }
 }

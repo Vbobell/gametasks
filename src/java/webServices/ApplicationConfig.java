@@ -29,7 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        //resources.add(webServices.UsuarioWS.class);
+        resources.add(webServices.QuadroTarefaWS.class);
         resources.add(webServices.TarefaWS.class);
         resources.add(webServices.UsuarioWS.class);
     }
